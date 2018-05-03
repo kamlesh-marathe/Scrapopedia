@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mineral"
+    android:orientation="vertical"
+    android:weightSum="15"
+    android:background="#444444"
+    android:padding="16dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorAccent"
+        android:text="Carbohydrates"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFFFFF"
+        android:text="Introduction :"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:text="Carbohydrate are class of naturally occurring compounds and derivatives formed from them. In the early part of the 19th century, substances such as wood, starch, and linen were found to be composed mainly of molecules containing atoms of carbon (C), hydrogen (H), and oxygen (O) and to have the general formula C6H12O6; other organic molecules with similar formulas were found to have a similar ratio of hydrogen to oxygen. The general formula Cx(H2O)y is commonly used to represent many carbohydrates, which means “watered carbon.”"
+    />
+
+
+</LinearLayout>
