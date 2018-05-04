@@ -14,7 +14,8 @@
         android:id="@+id/imageview"
         android:layout_weight="8.5"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"/>
+
 
     <Button
         android:id="@+id/open_camera"
@@ -35,5 +36,6 @@
         android:background="@color/colorAccent"
         android:textColor="@color/white"
         android:text="Upload Image"/>
+
 
 </LinearLayout>
