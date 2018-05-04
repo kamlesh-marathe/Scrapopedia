@@ -7,7 +7,6 @@ public class Product {
 
     private int id;
     private String title,desc;
-    private Bitmap bitmap;
     private int image;
 
     public int getId() {
@@ -22,20 +21,15 @@ public class Product {
         return desc;
     }
 
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
     public int getImage() {
         return image;
     }
 
-    public Product(int id, String title, String desc, Bitmap bitmap, int image) {
+    public Product(int id, String title, String desc, int image) {
 
         this.id = id;
         this.title = title;
         this.desc = desc;
-        this.bitmap = bitmap;
         this.image = image;
     }
 }

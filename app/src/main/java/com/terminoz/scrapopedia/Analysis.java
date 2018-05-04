@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Analysis extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ProductAdapter adapter;
-
+    String predict="";
     List<Product> productList;
 
 
@@ -31,19 +32,34 @@ public class Analysis extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Intent intent=getIntent();
+//        Intent intent=getIntent();
+//        Bitmap bitmap;
+//        byte[] byteArray = getIntent().getByteArrayExtra("image");
+//        bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
-        Bitmap bitmap;
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
-        bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        BackgroundWork backgroundWork = new BackgroundWork(Analysis.this);
+        backgroundWork.execute("analyse");
+        backgroundWork.setOnTaskFinishEvent(new BackgroundWork.onTaskExecutionFinished() {
+            @Override
+            public void onTaskExecutionFinished(String Result) {
+                Log.d("Analyse","Result "+Result);
+                Toast.makeText(Analysis.this, "Result "+Result, Toast.LENGTH_SHORT).show();
+                predict = Result;
+                String [] items = predict.split(",");
+                Log.d("Analyse","items "+items.length);
+                for (int i=0;i<items.length;i++) {
+                    Log.d("Analysis","Val "+items[i]);
+                }
+            }
+        });
+
 
         productList.add(
                 new Product(
                         1,
                         "Onion",
                         " Also known as bulb onions or common onions, they are vegetables and the most widely cultivated species of the genus Allium.",
-                        bitmap,
-                        R.drawable.onion
+                         R.drawable.onion
                 )
         );
 
@@ -52,8 +68,7 @@ public class Analysis extends AppCompatActivity {
                         2,
                         "Potato",
                         "The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum. Potato may be applied to both the plant and the edible tuber.",
-                        bitmap,
-                        R.drawable.potato
+                         R.drawable.potato
                 )
         );
 
@@ -62,8 +77,7 @@ public class Analysis extends AppCompatActivity {
                         3,
                         "Tomato",
                         "Tomato: The tomato is the edible, often red, fruit/berry of the plant Solanum lycopersicum, commonly known as a tomato plant.",
-                        bitmap,
-                        R.drawable.tomato
+                         R.drawable.tomato
                 )
         );
 
@@ -72,8 +86,7 @@ public class Analysis extends AppCompatActivity {
                         4,
                         "Egg",
                         "Eggs are a very good source of inexpensive, high quality protein.",
-                        bitmap,
-                        R.drawable.egg
+                         R.drawable.egg
                 )
         );
 
