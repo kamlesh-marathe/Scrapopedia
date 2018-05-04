@@ -23,7 +23,8 @@
         <activity android:name=".Home" />
         <activity android:name=".Analysis" />
         <activity android:name=".Vegetable" />
-        <activity android:name=".mineral"></activity>
+        <activity android:name=".mineral" />
+        <activity android:name=".NutMat"></activity>
     </application>
 
 </manifest>

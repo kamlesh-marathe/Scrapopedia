@@ -5,6 +5,6 @@
     <item
         android:id="@+id/action_next"
         android:title="Next"
-        android:icon="@mipmap/ic_next"
+        android:icon="@drawable/ic_next"
         app:showAsAction="ifRoom"/>
 </menu>

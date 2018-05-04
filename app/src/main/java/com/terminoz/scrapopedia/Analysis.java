@@ -3,11 +3,13 @@ package com.terminoz.scrapopedia;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,7 +24,8 @@ public class Analysis extends AppCompatActivity {
     ProductAdapter adapter;
     String predict="";
     List<Product> productList;
-    Set<String> fooditems;
+    ArrayList<String> fooditems;
+    FloatingActionButton fab;
 
 
     @Override
@@ -32,7 +35,8 @@ public class Analysis extends AppCompatActivity {
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         productList = new ArrayList<>();
-        fooditems = new HashSet<String>();
+        fab = findViewById(R.id.floatingActionButton);
+        fooditems = new ArrayList<String>();
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -120,8 +124,22 @@ public class Analysis extends AppCompatActivity {
                 }
                 adapter = new ProductAdapter(getBaseContext(),productList);
                 recyclerView.setAdapter(adapter);
+                if (productList.size() > 1){
+                    fab.setVisibility(View.VISIBLE);
+                    fab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(Analysis.this,NutMat.class);
+                            intent.putExtra("vegs",fooditems);
+                            startActivity(intent);
+
+                        }
+                    });
+                }
             }
         });
+
+
 
 //        for (String name : fooditems)
 //        {

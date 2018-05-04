@@ -4,36 +4,43 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class Vegetable extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class NutMat extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vegetable);
+        setContentView(R.layout.activity_nut_mat);
         init();
     }
 
-    String Vegname;
+    String vegs;
     String vege;
     Button button;
 
     private void init() {
         Intent intent = getIntent();
-        Vegname = intent.getStringExtra("Veg");
-        button = findViewById(R.id.veg_name);
-        button.setText(Vegname);
-
-//        Toast.makeText(this, "Vegname "+Vegname, Toast.LENGTH_SHORT).show();
-        BackgroundWork backgroundWork = new BackgroundWork(this);
-        backgroundWork.execute("veg",Vegname);
+        ArrayList<String> arrayList = intent.getStringArrayListExtra("vegs");
+        int bol=0;
+        vegs="";
+        for (String x:arrayList) {
+            if (bol!=0) {
+                vegs+=",";
+            }
+            vegs+=x;
+            bol=1;
+        }
+        Log.d("Post Send ",vegs);
+        BackgroundWork backgroundWork =new BackgroundWork(this);
+        backgroundWork.execute("nutmin",vegs);
         backgroundWork.setOnTaskFinishEvent(new BackgroundWork.onTaskExecutionFinished() {
             @Override
             public void onTaskExecutionFinished(String Result) {
                 vege = Result;
+                Log.d("Result ",Result);
                 String [] items = vege.split(",");
                 button = findViewById(R.id.calories);
                 button.setText(items[0]);
@@ -43,14 +50,6 @@ public class Vegetable extends AppCompatActivity {
                 button.setText(items[2]+" G");
                 button = findViewById(R.id.carbs);
                 button.setText(items[3]+" G");
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent1 = new Intent(Vegetable.this,mineral.class);
-                        intent1.putExtra("minname","carbs");
-                        startActivity(intent1);
-                    }
-                });
                 button = findViewById(R.id.sugar);
                 button.setText(items[4]+" G");
                 button = findViewById(R.id.fiber);
