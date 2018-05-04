@@ -27,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/calories"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,6 +35,7 @@
             android:text="Calories" />
 
         <Button
+            android:id="@+id/calories"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,33 +43,34 @@
             android:textColor="@color/text_table"
             android:text="18"/>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_weight="0.2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/water"
-            android:layout_weight="0.3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_border"
-            android:textColor="@color/text_table"
-            android:text="Water" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2">
 
         <Button
-            android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.3"
             android:background="@drawable/button_border"
-            android:textColor="@color/text_table"
-            android:text="95%"/>
+            android:text="Water"
+            android:textColor="@color/text_table" />
+
+        <Button
+            android:id="@+id/water"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:background="@drawable/button_border"
+            android:text="95%"
+            android:textColor="@color/text_table" />
     </LinearLayout>
     <LinearLayout
         android:layout_weight="0.2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/protein"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,6 +79,7 @@
             android:text="Protein" />
 
         <Button
+            android:id="@+id/protein"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -90,7 +92,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/carbs"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,6 +100,7 @@
             android:text="Carbs" />
 
         <Button
+            android:id="@+id/carbs"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -111,7 +113,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/sugar"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -120,6 +121,7 @@
             android:text="Sugar" />
 
         <Button
+            android:id="@+id/sugar"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -132,7 +134,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/fiber"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -141,6 +142,7 @@
             android:text="Fiber" />
 
         <Button
+            android:id="@+id/fiber"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -153,7 +155,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/Fat"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -162,6 +163,7 @@
             android:text="Fat" />
 
         <Button
+            android:id="@+id/Fat"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -174,7 +176,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/Saturated_Fat"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -183,6 +184,7 @@
             android:text="Saturated Fat" />
 
         <Button
+            android:id="@+id/Saturated_Fat"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -195,7 +197,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/mono"
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -204,6 +205,7 @@
             android:text="Monosaturated" />
 
         <Button
+            android:id="@+id/mono"
             android:layout_weight="0.7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

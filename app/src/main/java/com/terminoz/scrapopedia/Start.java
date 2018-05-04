@@ -16,5 +16,6 @@ public class Start extends AppCompatActivity {
     private void initialisation() {
         Intent intent = new Intent(Start.this,Home.class);
         startActivity(intent);
+        finish();
     }
 }

@@ -71,6 +71,41 @@ public class BackgroundWork extends AsyncTask<String,Void,String> {
             catch (MalformedURLException e){e.printStackTrace();}
             catch (IOException e){e.printStackTrace();}
         }
+        else if (task.equals("veg"))
+        {
+            try
+            {
+                login_url="http://"+ip+"/table.php";
+                URL url=new URL(login_url);
+                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream=httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter= new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postdata = URLEncoder.encode("vegname","UTF-8")+"="+URLEncoder.encode(params[1],"UTF-8");
+
+                bufferedWriter.write(postdata);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream=httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line=bufferedReader.readLine())!=null) {
+                    result+=line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                return result;
+            }
+            catch (MalformedURLException e){e.printStackTrace();}
+            catch (IOException e){e.printStackTrace();}
+        }
 
         return null;
     }

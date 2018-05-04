@@ -42,31 +42,20 @@ public class Home extends AppCompatActivity {
 
     ImageView imageView;
     Button cam_btn;
-    Button up_btn;
     Bitmap bitmap;
     String url="http://scrapopedia.ml/upload.php";
     int cnt;
-    int bol=0;
 
 
     private void initialisation() {
         cnt=1;
         imageView = findViewById(R.id.imageview);
         cam_btn = findViewById(R.id.open_camera);
-        up_btn = findViewById(R.id.upload);
         cam_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,0);
-            }
-        });
-
-        up_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (bol==1)
-                    UploadImage();
             }
         });
 
@@ -79,7 +68,7 @@ public class Home extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             bitmap = (Bitmap)data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
-            bol=1;
+            UploadImage();
         }
         else if (resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "Cancelled by User", Toast.LENGTH_SHORT).show();
@@ -91,20 +80,12 @@ public class Home extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id= item.getItemId();
         if (id==R.id.action_next) {
             Intent intent = new Intent(Home.this,Analysis.class);
-
-//            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-//            bitmap.compress(Bitmap.CompressFormat.PNG, 100,bStream);
-//            byte[] byteArray = bStream.toByteArray();
-//            intent.putExtra("image", byteArray);
-
             startActivity(intent);
-            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -126,7 +107,6 @@ public class Home extends AppCompatActivity {
     }
 
     private void UploadImage() {
-        bol=0;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
