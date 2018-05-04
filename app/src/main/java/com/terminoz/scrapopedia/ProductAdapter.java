@@ -1,6 +1,7 @@
 package com.terminoz.scrapopedia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
@@ -38,12 +39,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
+    public void onBindViewHolder(@NonNull final ProductViewHolder holder, int position) {
+        final Product product = productList.get(position);
         holder.textViewtitle.setText(product.getTitle());
         holder.textViewdesc.setText(product.getDesc());
 
         holder.imageView.setImageDrawable(context.getResources().getDrawable(product.getImage()));
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,Vegetable.class);
+                intent.putExtra("Veg",product.getTitle());
+                context.startActivity(intent);
+            }
+        });
 //        holder.imageView.setImageBitmap(product.getBitmap());
     }
 
